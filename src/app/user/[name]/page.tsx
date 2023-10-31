@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Loading from './loading';
 
 type TNameProps = {
   params: {
@@ -8,7 +9,9 @@ type TNameProps = {
 
 const Name: React.FC<TNameProps> = ({ params }) => {
 
-  return <h1>Hello, {params.name}!</h1>
+  return <React.Suspense fallback={<Loading />}>
+    <h1>Hello, {params.name}!</h1>
+  </React.Suspense>;
 }
 
 export default Name;
